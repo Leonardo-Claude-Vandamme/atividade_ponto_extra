@@ -1,0 +1,142 @@
+/* Paleta: branco, amarelo e preto */
+:root {
+  --cor-amarelo: #ffc107;
+  --cor-amarelo-escuro: #e0a800;
+  --cor-preto: #111111;
+  --cor-preto-suave: #2b2b2b;
+  --cor-fundo: #fafaf7;
+
+  /* Ajusta as cores "primárias" do Bootstrap para a nova paleta */
+  --bs-primary: var(--cor-preto);
+  --bs-primary-rgb: 17, 17, 17;
+  --bs-link-color: var(--cor-preto);
+  --bs-link-hover-color: var(--cor-amarelo-escuro);
+  --bs-focus-ring-color: rgba(255, 193, 7, 0.35);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cor-fundo);
+}
+
+main {
+  flex: 1;
+}
+
+/* Menu */
+.navbar.bg-dark {
+  background-color: var(--cor-preto) !important;
+  border-bottom: 3px solid var(--cor-amarelo);
+}
+
+.navbar-brand {
+  color: var(--cor-amarelo) !important;
+}
+
+.navbar-dark .nav-link:hover,
+.navbar-dark .nav-link:focus {
+  color: var(--cor-amarelo);
+}
+
+/* Faixa de destaque do topo */
+.hero {
+  background: linear-gradient(135deg, var(--cor-preto), var(--cor-preto-suave));
+  border-bottom: 6px solid var(--cor-amarelo);
+}
+
+.hero h1 {
+  color: var(--cor-amarelo);
+}
+
+.hero .btn-light {
+  background-color: var(--cor-amarelo);
+  border-color: var(--cor-amarelo);
+  color: var(--cor-preto);
+  font-weight: 600;
+}
+
+.hero .btn-light:hover {
+  background-color: var(--cor-amarelo-escuro);
+  border-color: var(--cor-amarelo-escuro);
+}
+
+.hero .btn-outline-light:hover {
+  color: var(--cor-preto);
+}
+
+/* Botões principais */
+.btn-primary {
+  --bs-btn-bg: var(--cor-amarelo);
+  --bs-btn-border-color: var(--cor-amarelo);
+  --bs-btn-color: var(--cor-preto);
+  --bs-btn-hover-bg: var(--cor-amarelo-escuro);
+  --bs-btn-hover-border-color: var(--cor-amarelo-escuro);
+  --bs-btn-hover-color: var(--cor-preto);
+  --bs-btn-active-bg: var(--cor-amarelo-escuro);
+  --bs-btn-active-border-color: var(--cor-amarelo-escuro);
+  --bs-btn-active-color: var(--cor-preto);
+  --bs-btn-disabled-bg: var(--cor-amarelo);
+  --bs-btn-disabled-border-color: var(--cor-amarelo);
+  --bs-btn-disabled-color: var(--cor-preto);
+  font-weight: 600;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--cor-preto);
+  --bs-btn-border-color: var(--cor-preto);
+  --bs-btn-hover-bg: var(--cor-preto);
+  --bs-btn-hover-border-color: var(--cor-preto);
+  --bs-btn-hover-color: var(--cor-amarelo);
+  --bs-btn-active-bg: var(--cor-preto);
+  --bs-btn-active-border-color: var(--cor-preto);
+  --bs-btn-active-color: var(--cor-amarelo);
+}
+
+/* Etiquetas de tipo */
+.text-bg-primary {
+  background-color: var(--cor-amarelo) !important;
+  color: var(--cor-preto) !important;
+}
+
+.text-bg-success {
+  background-color: var(--cor-preto) !important;
+  color: var(--cor-amarelo) !important;
+}
+
+/* Campos de formulário em foco */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--cor-amarelo);
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.35);
+}
+
+/* Cards das atividades */
+.card-atividade {
+  border-top: 4px solid var(--cor-amarelo);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-atividade.workshop {
+  border-top-color: var(--cor-preto);
+}
+
+.card-atividade:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Destaca o card que está sendo editado */
+.card-atividade.em-edicao {
+  outline: 3px solid var(--cor-preto);
+  box-shadow: 0 0 0 6px var(--cor-amarelo) !important;
+}
+
+/* Rodapé */
+footer,
+footer.text-secondary {
+  background-color: var(--cor-preto);
+  color: #cccccc !important;
+  border-top: 3px solid var(--cor-amarelo) !important;
+}

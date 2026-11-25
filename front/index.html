@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Atividades Formativas — Painel de Gestão</title>
+
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+
+        <a class="navbar-brand fw-bold" href="#inicio">
+          Atividades Formativas
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menuPrincipal"
+          aria-controls="menuPrincipal"
+          aria-expanded="false"
+          aria-label="Abrir menu">
+
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="menuPrincipal" class="collapse navbar-collapse">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="#inicio">Início</a>
+            <a class="nav-link" href="#gestao">Gestão</a>
+            <a class="nav-link" href="#novaAtividade">Nova atividade</a>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Destaque -->
+    <section id="inicio" class="hero py-5 text-white">
+      <div class="container text-center text-md-start">
+        <h1 class="display-5 fw-bold">Painel de Gestão</h1>
+        <p class="lead mb-4">
+          Consulte, cadastre, edite e exclua cursos e workshops.
+        </p>
+        <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+          <a href="#gestao" class="btn btn-light">Ver atividades</a>
+          <a href="#novaAtividade" class="btn btn-outline-light">Cadastrar atividade</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mensagens de sucesso, erro e carregamento -->
+    <section id="feedback" class="container mt-4">
+      <div
+        id="mensagem"
+        class="alert d-none"
+        role="alert"
+        aria-live="polite">
+      </div>
+
+      <div
+        id="carregando"
+        class="alert alert-info d-none"
+        role="status">
+        <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
+        Carregando informações...
+      </div>
+    </section>
+
+    <!-- Listagem -->
+    <section id="gestao" class="container py-4">
+
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+        <div>
+          <h2 class="mb-1">Atividades cadastradas</h2>
+          <p class="text-secondary mb-0">
+            Total: <span id="totalAtividades">0</span>
+          </p>
+        </div>
+
+        <button id="botaoAtualizar" type="button" class="btn btn-outline-secondary">
+          Atualizar lista
+        </button>
+      </div>
+
+      <div
+        id="areaConteudo"
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      </div>
+
+    </section>
+
+    <!-- Formulário -->
+    <section id="novaAtividade" class="container pb-5">
+
+      <div class="card shadow-sm">
+        <div class="card-body p-4">
+
+          <h2 id="tituloFormulario" class="h3 mb-4">Nova atividade</h2>
+
+          <form id="formAtividade" novalidate>
+            <div class="row g-3">
+
+              <div class="col-12 col-md-4">
+                <label for="tipo" class="form-label">Tipo</label>
+                <select id="tipo" name="tipo" class="form-select">
+                  <option value="curso">Curso</option>
+                  <option value="workshop">Workshop</option>
+                </select>
+              </div>
+
+              <div class="col-12 col-md-5">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" id="titulo" name="titulo" class="form-control"
+                       placeholder="Ex.: Curso de JavaScript">
+                <div class="invalid-feedback">Informe o título da atividade.</div>
+              </div>
+
+              <div class="col-12 col-md-3">
+                <label for="ano" class="form-label">Ano</label>
+                <input type="number" id="ano" name="ano" class="form-control"
+                       placeholder="Ex.: 2026">
+                <div class="invalid-feedback">Informe um ano entre 2000 e 2100.</div>
+              </div>
+
+              <!-- Campos específicos do curso -->
+              <div id="camposCurso" class="col-12">
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label for="professor" class="form-label">Professor</label>
+                    <input type="text" id="professor" name="professor" class="form-control">
+                    <div class="invalid-feedback">Informe o professor.</div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                    <label for="cargaHoraria" class="form-label">Carga horária (h)</label>
+                    <input type="number" id="cargaHoraria" name="cargaHoraria" class="form-control" min="1">
+                    <div class="invalid-feedback">Deve ser maior que zero.</div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                    <label for="vagas" class="form-label">Vagas</label>
+                    <input type="number" id="vagas" name="vagas" class="form-control" min="1">
+                    <div class="invalid-feedback">Deve ser maior que zero.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Campos específicos do workshop -->
+              <div id="camposWorkshop" class="col-12 d-none">
+                <div class="row g-3">
+                  <div class="col-12 col-md-5">
+                    <label for="instrutor" class="form-label">Instrutor</label>
+                    <input type="text" id="instrutor" name="instrutor" class="form-control">
+                    <div class="invalid-feedback">Informe o instrutor.</div>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <label for="local" class="form-label">Local</label>
+                    <input type="text" id="local" name="local" class="form-control">
+                    <div class="invalid-feedback">Informe o local.</div>
+                  </div>
+
+                  <div class="col-12 col-md-3">
+                    <label for="duracaoHoras" class="form-label">Duração (h)</label>
+                    <input type="number" id="duracaoHoras" name="duracaoHoras" class="form-control" min="1">
+                    <div class="invalid-feedback">Deve ser maior que zero.</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+              <button id="botaoSalvar" type="submit" class="btn btn-primary px-4">
+                Salvar atividade
+              </button>
+              <button id="botaoCancelar" type="button" class="btn btn-outline-secondary d-none">
+                Cancelar edição
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Modal  -->
+  <div class="modal fade" id="modalDetalhes" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="tituloModal">Detalhes da atividade</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <p id="detalheDescricao" class="mb-2"></p>
+          <p class="mb-0 text-secondary">Duração: <span id="detalheDuracao"></span> hora(s)</p>
+          <div id="detalheInscricao" class="alert alert-success mt-3 mb-0 d-none" role="status"></div>
+        </div>
+        <div class="modal-footer">
+          <button id="botaoInscrever" type="button" class="btn btn-success d-none">Inscrever-se</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-top py-4 text-center text-secondary">
+    <div class="container">
+      Projeto prático — Desenvolvimento Web e Mobile I
+    </div>
+  </footer>
+
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
